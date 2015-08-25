@@ -146,7 +146,6 @@ class OpenIDAuthz(object):
         self.auth = self
         # This makes the login form be a link
         self.useHttpHeader = True
-        self.httpLoginUrl = '/_openid_start/'
 
         if unknown != []:
             raise ValueError('Unknown authorization action(s) ' +
@@ -200,6 +199,7 @@ class OpenIDAuthz(object):
             self.init_childs = True
             status = request.site.buildbot_service.master.status
             root = status.getBuildbotURL()
+            self.httpLoginUrl = '%s/_openid_start/' % root
             request.site.resource.putChild('_openid_start',
                                            OpenIDStart(self.permissions.keys(),
                                                        self.openid_provider,
