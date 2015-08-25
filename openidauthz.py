@@ -177,7 +177,7 @@ class OpenIDAuthz(object):
         """Get the user formatted in html (with possible link to email)"""
         s = self.session(request)
         if s:
-            return s.userInfosHTML()
+            return s.userInfosHTML().decode('UTF-8')
         return "not authenticated?!"
 
     def getUsernameFull(self, request):
