@@ -18,3 +18,6 @@ authz_cfg=openidauthz.OpenIDAuthZ(
     releng=['forceBuild']
 )
 ```
+
+Because python identifiers can't include dashes, but unix group names can,
+there is a workaround: in place of the dash, just insert ```_DASH_```.

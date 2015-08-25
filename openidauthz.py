@@ -130,6 +130,11 @@ class OpenIDAuthz(object):
         unknown = []
         self.permissions = {}
         for group in kwargs:
+            # Work around the limitations of python identifiers:
+            # python identifiers don't support dashes, while unix group names do
+            # This is admittedly a hack, but if you have a better way: a PR is welcome
+            group = group.replace('_DASH_', '-')
+
             self.permissions[group] = []
             for perm in kwargs[group]:
                 if perm in Authz.knownActions:
