@@ -9,6 +9,7 @@ Note2: This code is for BuildBot version 8.
 ## How to configure
 In master.cfg, replace the authz_cfg= line with something like
 
+```
 authz_cfg=openidauthz.OpenIDAuthZ(
     openid_provider='https://id.fedoraproject.org/openid/',
     _all_=['view'],
@@ -16,3 +17,4 @@ authz_cfg=openidauthz.OpenIDAuthZ(
     sysadmin=['stopBuild', 'gracefulShutdown'],
     releng=['forceBuild']
 )
+```
